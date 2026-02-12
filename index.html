@@ -17,7 +17,6 @@
             transition: background-color 0.5s;
         }
 
-        /* เอฟเฟกต์เขย่าหน้าจอ */
         .shake {
             animation: shake-animation 0.3s ease-in-out infinite;
         }
@@ -74,16 +73,8 @@
             font-weight: bold;
         }
 
-        #yesBtn { 
-            background-color: #4caf50; 
-            color: white; 
-        }
-
-        #noBtn { 
-            background-color: #f44336; 
-            color: white;
-            transition: all 0.1s ease;
-        }
+        #yesBtn { background-color: #4caf50; color: white; }
+        #noBtn { background-color: #f44336; color: white; transition: all 0.1s ease; }
 
         #successPage {
             display: none;
@@ -105,7 +96,7 @@
 <body>
 
     <div id="card">
-        <img class="main-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXo3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbM9GXc9G/giphy.gif" alt="Cute Cat">
+        <img class="main-img" src="https://media.tenor.com/7968595562142750346/tenor.gif" alt="Happy Cat">
         <h1>Tinthai</h1>
         <p>Will you be my Valentine 🫦</p>
         
@@ -127,14 +118,11 @@
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             noBtn.style.position = 'fixed';
-            
             const padding = 50;
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-            
             const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
             const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
-            
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
@@ -143,12 +131,8 @@
             document.getElementById('card').style.display = 'none';
             document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
-            
             document.body.classList.add('shake');
-            setTimeout(() => {
-                document.body.classList.remove('shake');
-            }, 2500);
-            
+            setTimeout(() => { document.body.classList.remove('shake'); }, 2500);
             setInterval(createHeart, 150);
         }
 
@@ -161,15 +145,11 @@
             heart.style.fontSize = Math.random() * 20 + 20 + 'px';
             heart.style.zIndex = '100';
             document.body.appendChild(heart);
-
             let top = -20;
             const fall = setInterval(() => {
                 top += 4;
                 heart.style.top = top + 'px';
-                if (top > window.innerHeight) {
-                    clearInterval(fall);
-                    heart.remove();
-                }
+                if (top > window.innerHeight) { clearInterval(fall); heart.remove(); }
             }, 20);
         }
     </script>
