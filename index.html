@@ -17,7 +17,7 @@
             transition: background-color 0.5s;
         }
 
-        /* เอฟเฟกต์เขย่าหน้าจอตอนกด Yes */
+        /* เอฟเฟกต์เขย่าหน้าจอ */
         .shake {
             animation: shake-animation 0.3s ease-in-out infinite;
         }
@@ -105,7 +105,7 @@
 <body>
 
     <div id="card">
-        <img class="main-img" src="https://cdn.pixabay.com/photo/2024/02/28/07/50/cat-8601426_1280.png" alt="Orange cat with flowers">
+        <img class="main-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXo3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbM9GXc9G/giphy.gif" alt="Cute Cat">
         <h1>Tinthai</h1>
         <p>Will you be my Valentine 🫦</p>
         
@@ -144,13 +144,11 @@
             document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
             
-            // เพิ่มการสั่นโยกๆ
             document.body.classList.add('shake');
             setTimeout(() => {
                 document.body.classList.remove('shake');
             }, 2500);
             
-            // เอฟเฟกต์หัวใจตก
             setInterval(createHeart, 150);
         }
 
