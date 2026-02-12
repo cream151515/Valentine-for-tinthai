@@ -19,14 +19,14 @@
 
         /* เอฟเฟกต์เขย่าหน้าจอ */
         .shake {
-            animation: shake-animation 0.5s ease-in-out infinite;
+            animation: shake-animation 0.3s ease-in-out infinite;
         }
 
         @keyframes shake-animation {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-10px, 0); }
-            50% { transform: translate(10px, 0); }
-            75% { transform: translate(-10px, 0); }
+            25% { transform: translate(-15px, 0); }
+            50% { transform: translate(15px, 0); }
+            75% { transform: translate(-15px, 0); }
             100% { transform: translate(0, 0); }
         }
 
@@ -41,12 +41,16 @@
             z-index: 10;
         }
 
-        img {
-            width: 250px;
+        /* ปรับขนาดรูปให้พอดี */
+        .main-img {
+            width: 100%;
+            max-width: 280px;
             height: auto;
             border-radius: 15px;
             margin-bottom: 20px;
-            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h1 { color: #d32f2f; margin: 10px 0; }
@@ -56,9 +60,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 50px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+            gap: 40px; 
             margin-top: 30px;
-            min-height: 60px;
+            height: 60px;
+            position: relative;
         }
 
         button {
@@ -68,23 +73,19 @@
             border-radius: 12px;
             cursor: pointer;
             font-weight: bold;
-            transition: transform 0.1s;
         }
 
         #yesBtn { 
             background-color: #4caf50; 
             color: white; 
-            z-index: 2;
         }
 
         #noBtn { 
             background-color: #f44336; 
-            color: white; 
-            position: relative; /* เปลี่ยนเป็น relative ก่อนเพื่อให้ไม่ซ้อน */
-            z-index: 1;
+            color: white;
+            transition: all 0.1s ease;
         }
 
-        /* หน้าดีใจ */
         #successPage {
             display: none;
             text-align: center;
@@ -93,7 +94,7 @@
 
         .emoji-float {
             font-size: 50px;
-            animation: float 1s infinite alternate;
+            animation: float 0.8s infinite alternate;
         }
 
         @keyframes float {
@@ -105,7 +106,7 @@
 <body>
 
     <div id="card">
-        <img src="https://i.pinimg.com/736x/21/f1/81/21f181f253a66608973686259f9702951.jpg" alt="Cat with Flowers">
+        <img class="main-img" src="https://i.imgur.com/vH3IidY.png" alt="Cat with Flowers">
         <h1>Tinthai</h1>
         <p>Will you be my Valentine 🫦</p>
         
@@ -117,18 +118,17 @@
 
     <div id="successPage">
         <div class="emoji-float">😻💖✨</div>
-        <h1 style="font-size: 3rem; color: #d32f2f;">Yee mak noob</h1>
+        <h1 style="font-size: 2.5rem; color: #d32f2f;">Yee mak noob</h1>
         <h2 style="color: #555;">Best decision ever</h2>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcXF3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3ZmJ5X2lkJmN0PWc/GeimqsH0TLDt4tScGw/giphy.gif" style="width: 300px;">
-        <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081; margin-top: 20px;">I love u baby</p>
+        <img class="main-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJueXo3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/GeimqsH0TLDt4tScGw/giphy.gif">
+        <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081;">I love u baby</p>
     </div>
 
     <script>
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            noBtn.style.position = 'fixed'; // เปลี่ยนเป็น fixed เมื่อเริ่มขยับหนี
+            noBtn.style.position = 'fixed';
             
-            // คำนวณขอบเขตไม่ให้ปุ่มออกนอกจอ
             const padding = 50;
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
@@ -141,24 +141,18 @@
         }
 
         function showSuccess() {
-            // ซ่อนหน้าแรก โชว์หน้าที่สอง
             document.getElementById('card').style.display = 'none';
-            const successPage = document.getElementById('successPage');
-            successPage.style.display = 'block';
-            
-            // เปลี่ยนพื้นหลังและเพิ่มเอฟเฟกต์สั่น
+            document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
-            document.body.classList.add('shake');
             
-            // หยุดสั่นหลังจาก 3 วินาที (เพื่อให้ดูตื่นเต้นแค่ตอนแรก)
+            // เพิ่มการสั่น
+            document.body.classList.add('shake');
             setTimeout(() => {
                 document.body.classList.remove('shake');
-            }, 3000);
+            }, 2500);
             
-            // พลุหัวใจ
-            for(let i=0; i<60; i++) {
-                createHeart();
-            }
+            // เอฟเฟกต์หัวใจตก
+            setInterval(createHeart, 150);
         }
 
         function createHeart() {
@@ -167,22 +161,14 @@
             heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.top = '-20px';
-            heart.style.fontSize = Math.random() * 30 + 10 + 'px';
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
             heart.style.zIndex = '100';
-            heart.style.pointerEvents = 'none';
             document.body.appendChild(heart);
 
             let top = -20;
-            const speed = Math.random() * 3 + 2;
-            const sideMovement = Math.random() * 2 - 1;
-            let left = parseFloat(heart.style.left);
-
             const fall = setInterval(() => {
-                top += speed;
-                left += sideMovement;
+                top += 4;
                 heart.style.top = top + 'px';
-                heart.style.left = left + 'vw';
-                
                 if (top > window.innerHeight) {
                     clearInterval(fall);
                     heart.remove();
@@ -192,4 +178,3 @@
     </script>
 </body>
 </html>
-
