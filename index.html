@@ -17,7 +17,7 @@
             transition: background-color 0.5s;
         }
 
-        /* เอฟเฟกต์เขย่าหน้าจอ */
+        /* เอฟเฟกต์เขย่าหน้าจอตอนกด Yes */
         .shake {
             animation: shake-animation 0.3s ease-in-out infinite;
         }
@@ -41,7 +41,6 @@
             z-index: 10;
         }
 
-        /* ปรับขนาดรูปให้พอดี */
         .main-img {
             width: 100%;
             max-width: 280px;
@@ -106,7 +105,7 @@
 <body>
 
     <div id="card">
-        <img class="main-img" src="https://i.imgur.com/vH3IidY.png" alt="Cat with Flowers">
+        <img class="main-img" src="https://cdn.pixabay.com/photo/2024/02/28/07/50/cat-8601426_1280.png" alt="Orange cat with flowers">
         <h1>Tinthai</h1>
         <p>Will you be my Valentine 🫦</p>
         
@@ -120,7 +119,7 @@
         <div class="emoji-float">😻💖✨</div>
         <h1 style="font-size: 2.5rem; color: #d32f2f;">Yee mak noob</h1>
         <h2 style="color: #555;">Best decision ever</h2>
-        <img class="main-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJueXo3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/GeimqsH0TLDt4tScGw/giphy.gif">
+        <img class="main-img" src="https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif">
         <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081;">I love u baby</p>
     </div>
 
@@ -145,7 +144,7 @@
             document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
             
-            // เพิ่มการสั่น
+            // เพิ่มการสั่นโยกๆ
             document.body.classList.add('shake');
             setTimeout(() => {
                 document.body.classList.remove('shake');
